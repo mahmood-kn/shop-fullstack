@@ -1,7 +1,7 @@
 import './globals.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import '../assets/styles/bootstrap.custom.css';
-// import '../assets/styles/index.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/styles/bootstrap.custom.css';
+import '../assets/styles/index.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
