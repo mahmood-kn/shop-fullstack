@@ -1,9 +1,11 @@
+'use client';
 import './globals.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles/bootstrap.custom.css';
 import '../assets/styles/index.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Container } from 'react-bootstrap';
 
 export const metadata = {
   title: 'Pro Shop',
@@ -15,7 +17,9 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body>
         <Header />
-        {children}
+        <main className='py-3 '>
+          <Container>{children}</Container>
+        </main>
         <Footer />
       </body>
     </html>
