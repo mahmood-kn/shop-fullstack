@@ -1,0 +1,15 @@
+{
+  "name": "proshop-v2",
+  "version": "1.0.0",
+  "description": "eCommerce app with MERN",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "Mahmood Najafi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
