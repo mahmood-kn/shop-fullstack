@@ -2,7 +2,7 @@ import ProductScreen from '@/screens/ProductScreen';
 import { apiUrl } from '@/utils/main';
 
 async function getData(id) {
-  const res = await fetch(`${apiUrl}/api/product/${id}`, {
+  const res = await fetch(`${apiUrl}/api/products/${id}`, {
     // cache: 'no-store',
   });
   // The return value is *not* serialized
