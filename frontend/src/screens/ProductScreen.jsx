@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 // import Image from 'next/image';
 import {
@@ -9,11 +10,9 @@ import {
   Image,
   Button,
 } from 'react-bootstrap';
-import products from '../products';
 import Rating from '../components/Rating';
 
-const ProductScreen = ({ productId }) => {
-  const product = products.find((p) => p._id === productId);
+const ProductScreen = ({ productId, product }) => {
   return (
     <Container>
       <Link className='btn btn-light my-3' href='/'>
