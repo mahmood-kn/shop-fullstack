@@ -6,6 +6,7 @@ import '../assets/styles/index.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Container } from 'react-bootstrap';
+import { Providers } from '@/redux/provider';
 
 export const metadata = {
   title: 'Pro Shop',
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <main className='py-3 '>
-          <Container>{children}</Container>
+          <Providers>
+            <Container>{children}</Container>
+          </Providers>
         </main>
         <Footer />
       </body>

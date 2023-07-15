@@ -1,8 +1,8 @@
 import ProductScreen from '@/screens/ProductScreen';
-import { apiUrl } from '@/utils/main';
+import { BASE_URL, PRODUCTS_URL } from '@/utils/constants';
 
 async function getData(id) {
-  const res = await fetch(`${apiUrl}/api/products/${id}`, {
+  const res = await fetch(`${BASE_URL}${PRODUCTS_URL}/${id}`, {
     // cache: 'no-store',
   });
   // The return value is *not* serialized
@@ -18,10 +18,13 @@ async function getData(id) {
 }
 
 const Page = async ({ params }) => {
-  const product = await getData(params.id);
+  // const product = await getData(params.id);
   return (
     <>
-      <ProductScreen product={product} productId={params.id} />
+      <ProductScreen
+        // product={product}
+        productId={params.id}
+      />
     </>
   );
 };

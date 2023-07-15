@@ -1,8 +1,8 @@
 import HomeScreen from '@/screens/HomeScreen';
-import { apiUrl } from '@/utils/main';
+import { BASE_URL, PRODUCTS_URL } from '@/utils/constants';
 // import styles from './page.module.css'
 async function getData() {
-  const res = await fetch(`${apiUrl}/api/products`);
+  const res = await fetch(`${BASE_URL}${PRODUCTS_URL}`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -16,6 +16,10 @@ async function getData() {
 }
 
 export default async function Home() {
-  const products = await getData();
-  return <HomeScreen products={products} />;
+  // const products = await getData();
+  return (
+    <HomeScreen
+    // products={products}
+    />
+  );
 }
