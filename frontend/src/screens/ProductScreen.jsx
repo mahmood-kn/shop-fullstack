@@ -12,7 +12,8 @@ import {
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import { useGetProductDetailsQuery } from '@/redux/slices/productApiSlice';
-
+import Loader from '@/components/Loader';
+import Message from '@/components/Message';
 const ProductScreen = ({ productId }) => {
   const {
     data: product,
@@ -25,9 +26,11 @@ const ProductScreen = ({ productId }) => {
         Go Back
       </Link>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
+        <Message variant='danger'>
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <Row>
           <Col md={5}>

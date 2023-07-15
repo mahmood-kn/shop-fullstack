@@ -1,6 +1,8 @@
 'use client';
 import { Row, Col } from 'react-bootstrap';
 import Product from '@/components/Product';
+import Loader from '@/components/Loader';
+import Message from '@/components/Message';
 import { useGetProductsQuery } from '@/redux/slices/productApiSlice';
 
 const HomeScreen = ({}) => {
@@ -8,9 +10,11 @@ const HomeScreen = ({}) => {
   return (
     <>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
+        <Message variant='danger'>
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
           <h1>Latest Products</h1>
