@@ -3,7 +3,9 @@ import './globals.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles/bootstrap.custom.css';
 import '../assets/styles/index.css';
-import Header from '@/components/Header';
+// import Header from '@/components/Header';
+import dynamic from 'next/dynamic';
+const Header = dynamic(() => import('@/components/Header'), { ssr: false });
 import Footer from '@/components/Footer';
 import { Container } from 'react-bootstrap';
 import { Providers } from '@/redux/provider';
@@ -17,13 +19,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body>
-        <Header />
-        <main className='py-3 '>
-          <Providers>
+        <Providers>
+          <Header />
+          <main className='py-3 '>
             <Container>{children}</Container>
-          </Providers>
-        </main>
-        <Footer />
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
