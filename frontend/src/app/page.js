@@ -15,7 +15,8 @@ async function getData() {
   return res.json();
 }
 
-export default async function Home() {
+// export default async function Home() {
+export default function Home() {
   // const products = await getData();
   return (
     <HomeScreen

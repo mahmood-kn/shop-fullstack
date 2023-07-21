@@ -17,7 +17,8 @@ async function getData(id) {
   return res.json();
 }
 
-const Page = async ({ params }) => {
+// const Page = async ({ params }) => {
+const Page = ({ params }) => {
   // const product = await getData(params.id);
   return (
     <>
