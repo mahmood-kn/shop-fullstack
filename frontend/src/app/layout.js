@@ -9,6 +9,8 @@ const Header = dynamic(() => import('@/components/Header'), { ssr: false });
 import Footer from '@/components/Footer';
 import { Container } from 'react-bootstrap';
 import { Providers } from '@/redux/provider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'Pro Shop',
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
             <Container>{children}</Container>
           </main>
           <Footer />
+          <ToastContainer />
         </Providers>
       </body>
     </html>
