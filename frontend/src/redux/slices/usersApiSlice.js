@@ -10,7 +10,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
         body: data,
       }),
-      keepUnusedDataFor: 5,
     }),
     register: builder.mutation({
       query: (data) => ({
@@ -19,7 +18,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
         body: data,
       }),
-      keepUnusedDataFor: 5,
     }),
     logout: builder.mutation({
       query: () => ({
@@ -27,7 +25,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
         method: 'POST',
       }),
-      keepUnusedDataFor: 5,
     }),
   }),
 });
