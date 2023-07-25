@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '@/redux/slices/usersApiSlice';
 import { logout } from '@/redux/slices/authSlice';
 import { useRouter } from 'next/navigation';
+import { saveShippingAddress } from '@/redux/slices/cartSlice';
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
@@ -18,6 +19,8 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
+      dispatch(saveShippingAddress({}));
+
       router.push('/login');
     } catch (err) {
       console.log(err);

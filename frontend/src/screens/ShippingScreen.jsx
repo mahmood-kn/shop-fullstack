@@ -6,10 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { saveShippingAddress } from '@/redux/slices/cartSlice';
 import CheckoutSteps from '@/components/CheckoutSteps';
+import usePrivateRoute from '@/hooks/usePrivateRoute';
 
 const ShippingScreen = () => {
+  usePrivateRoute();
   const { shippingAddress } = useSelector((state) => state.cart);
-  const { userInfo } = useSelector((state) => state.auth);
+
   const [address, setAddress] = useState(shippingAddress?.address || '');
   const [city, setCity] = useState(shippingAddress?.city || '');
   const [postalCode, setPostalCode] = useState(
@@ -18,11 +20,6 @@ const ShippingScreen = () => {
   const [country, setCountry] = useState(shippingAddress?.country || '');
   const dispatch = useDispatch();
   const router = useRouter();
-  useEffect(() => {
-    if (!userInfo) {
-      router.replace('/login');
-    }
-  }, [userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
