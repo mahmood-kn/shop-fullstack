@@ -3,7 +3,6 @@ import React from 'react';
 import useAdminRoute from '@/hooks/useAdminRoute';
 import { Table, Button } from 'react-bootstrap';
 import { useGetOrdersQuery } from '@/redux/slices/orderApiSlice';
-import { useDispatch } from 'react-redux';
 import Loader from '@/components/Loader';
 import Message from '@/components/Message';
 import { FaTimes } from 'react-icons/fa';
@@ -12,7 +11,6 @@ import Link from 'next/link';
 const OrderListScreen = () => {
   useAdminRoute();
   const { data: orders, isLoading, error } = useGetOrdersQuery();
-  const dispatch = useDispatch();
   return (
     <>
       <h1>Orders</h1>

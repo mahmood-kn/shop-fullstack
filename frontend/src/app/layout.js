@@ -21,6 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
+      <head>
+        <title>Pro shop</title>
+      </head>
       <body>
         <Providers>
           <PayPalScriptProvider deferLoading={true}>
