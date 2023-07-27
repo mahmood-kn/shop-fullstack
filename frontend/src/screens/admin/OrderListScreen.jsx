@@ -1,10 +1,73 @@
 'use client';
-import useAdminRoute from '@/hooks/useAdminRoute';
 import React from 'react';
+import useAdminRoute from '@/hooks/useAdminRoute';
+import { Table, Button } from 'react-bootstrap';
+import { useGetOrdersQuery } from '@/redux/slices/orderApiSlice';
+import { useDispatch } from 'react-redux';
+import Loader from '@/components/Loader';
+import Message from '@/components/Message';
+import { FaTimes } from 'react-icons/fa';
+import Link from 'next/link';
 
 const OrderListScreen = () => {
   useAdminRoute();
-  return <div>OrderListScreen</div>;
+  const { data: orders, isLoading, error } = useGetOrdersQuery();
+  const dispatch = useDispatch();
+  return (
+    <>
+      <h1>Orders</h1>
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>{error}</Message>
+      ) : (
+        <Table striped hover responsive className='table-sm'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>USER</th>
+              <th>DATE</th>
+              <th>TOTAL</th>
+              <th>PAID</th>
+              <th>DELIVERED</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order._id}>
+                <td>{order._id}</td>
+                <td>{order.user && order.user.name}</td>
+                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>{order.totalPrice}</td>
+                <td>
+                  {order.isPaid ? (
+                    order.paidAt.substring(0, 10)
+                  ) : (
+                    <FaTimes style={{ color: 'red' }} />
+                  )}
+                </td>
+                <td>
+                  {order.isDelivered ? (
+                    order.deliveredAt.substring(0, 10)
+                  ) : (
+                    <FaTimes style={{ color: 'red' }} />
+                  )}
+                </td>
+                <td>
+                  <Link href={`/orders/${order._id}`}>
+                    <Button className='btn-sm' variant='light'>
+                      Details
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )}
+    </>
+  );
 };
 
 export default OrderListScreen;
