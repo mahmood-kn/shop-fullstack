@@ -11,6 +11,7 @@ import { Container } from 'react-bootstrap';
 import { Providers } from '@/redux/provider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 export const metadata = {
   title: 'Pro Shop',
@@ -22,12 +23,14 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body>
         <Providers>
-          <Header />
-          <main className='py-3 '>
-            <Container>{children}</Container>
-          </main>
-          <Footer />
-          <ToastContainer />
+          <PayPalScriptProvider deferLoading={true}>
+            <Header />
+            <main className='py-3 '>
+              <Container>{children}</Container>
+            </main>
+            <Footer />
+            <ToastContainer />
+          </PayPalScriptProvider>
         </Providers>
       </body>
     </html>
