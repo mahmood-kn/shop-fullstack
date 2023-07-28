@@ -63,7 +63,7 @@ const UserListScreen = () => {
                 </td>
 
                 <td>
-                  <Link href={`/admin/user/${user._id}/edit`}>
+                  <Link prefetch={false} href={`/admin/user/${user._id}/edit`}>
                     <Button className='btn-sm' variant='light'>
                       <FaEdit />
                     </Button>

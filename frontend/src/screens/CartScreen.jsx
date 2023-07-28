@@ -35,7 +35,10 @@ const CartScreen = () => {
         <h1 style={{ marginBottom: '20px' }}>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Your cart is empty <Link href='/'>Go Back</Link>
+            Your cart is empty{' '}
+            <Link prefetch={false} href='/'>
+              Go Back
+            </Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
@@ -46,7 +49,9 @@ const CartScreen = () => {
                     <Image src={BASE_URL + item.image} alt={item.name} fluid />
                   </Col>
                   <Col md={3}>
-                    <Link href={`/products/${item._id}`}>{item.name}</Link>
+                    <Link prefetch={false} href={`/products/${item._id}`}>
+                      {item.name}
+                    </Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>

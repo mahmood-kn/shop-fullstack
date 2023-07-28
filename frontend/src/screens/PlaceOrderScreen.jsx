@@ -86,7 +86,9 @@ const PlaceOrderScreen = () => {
                           />
                         </Col>
                         <Col>
-                          <Link href={`/products/${item.product}`}>
+                          <Link
+                            prefetch={false}
+                            href={`/products/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>

@@ -12,8 +12,10 @@ import FormContainer from '@/components/FormContainer';
 import Loader from '@/components/Loader';
 import Message from '@/components/Message';
 import { toast } from 'react-toastify';
+import useAdminRoute from '@/hooks/useAdminRoute';
 
 const ProductEditScreen = ({ id: productId }) => {
+  useAdminRoute();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -78,7 +80,10 @@ const ProductEditScreen = ({ id: productId }) => {
   };
   return (
     <>
-      <Link href='/admin/productlist' className='btn btn-light my-3'>
+      <Link
+        prefetch={false}
+        href='/admin/productlist'
+        className='btn btn-light my-3'>
         Go Back
       </Link>
       <FormContainer>

@@ -35,7 +35,7 @@ const ProductScreen = ({ productId }) => {
   };
   return (
     <Container>
-      <Link className='btn btn-light my-3' href='/'>
+      <Link prefetch={false} className='btn btn-light my-3' href='/'>
         Go Back
       </Link>
       {isLoading ? (

@@ -138,7 +138,7 @@ const ProfileScreen = () => {
                     )}
                   </td>
                   <td>
-                    <Link href={`/orders/${order._id}`}>
+                    <Link prefetch={false} href={`/orders/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
                         Details
                       </Button>

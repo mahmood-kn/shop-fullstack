@@ -30,7 +30,7 @@ const Header = () => {
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
-          <Link href='/'>
+          <Link prefetch={false} href='/'>
             <Navbar.Brand as='span'>
               <Image src={logo} alt='ProShop' />
               ProShop
@@ -39,7 +39,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <Link href='/cart'>
+              <Link prefetch={false} href='/cart'>
                 <Nav.Link as='span'>
                   <FaShoppingCart /> Cart
                   {cartItems.length > 0 && (
@@ -59,7 +59,7 @@ const Header = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <Link href='/login'>
+                <Link prefetch={false} href='/login'>
                   <Nav.Link as='span'>
                     <FaUser /> Login
                   </Nav.Link>

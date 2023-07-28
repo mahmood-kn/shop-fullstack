@@ -82,7 +82,9 @@ const ProductListScreen = () => {
                 <td>{product.brand}</td>
 
                 <td>
-                  <Link href={`/admin/product/${product._id}/edit`}>
+                  <Link
+                    prefetch={false}
+                    href={`/admin/product/${product._id}/edit`}>
                     <Button className='btn-sm mx-2' variant='light'>
                       <FaEdit />
                     </Button>

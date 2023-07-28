@@ -69,6 +69,7 @@ const LoginScreen = () => {
         <Col>
           New Customer?{' '}
           <Link
+            prefetch={false}
             href={redirect ? `/register?redirect=${redirect}` : '/register'}>
             Register
           </Link>

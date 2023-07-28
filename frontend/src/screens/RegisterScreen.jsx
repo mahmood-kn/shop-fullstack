@@ -91,7 +91,9 @@ const RegisterScreen = () => {
       <Row className='py-3'>
         <Col>
           Already have an account?{' '}
-          <Link href={redirect ? `/login?redirect=${redirect}` : '/register'}>
+          <Link
+            prefetch={false}
+            href={redirect ? `/login?redirect=${redirect}` : '/register'}>
             Login
           </Link>
         </Col>
