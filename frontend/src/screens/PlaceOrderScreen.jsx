@@ -136,7 +136,12 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>
-                    {error && <Message variant='danger'>{error}</Message>}
+                    {error && (
+                      <Message variant='danger'>
+                        {' '}
+                        {error?.data?.message || error.error}
+                      </Message>
+                    )}
                   </Col>
                 </Row>
               </ListGroup.Item>

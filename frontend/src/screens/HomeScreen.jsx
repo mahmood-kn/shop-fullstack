@@ -7,6 +7,7 @@ import { useGetProductsQuery } from '@/redux/slices/productApiSlice';
 import { useParams } from 'next/navigation';
 import Paginate from '@/components/Paginate';
 import Link from 'next/link';
+import ProductCarousel from '@/components/ProductCarousel';
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -16,10 +17,12 @@ const HomeScreen = () => {
   });
   return (
     <>
-      {keyword && (
+      {keyword ? (
         <Link href='/' className='btn btn-light mb-4'>
           Go Back
         </Link>
+      ) : (
+        <ProductCarousel />
       )}
       {isLoading ? (
         <Loader />
