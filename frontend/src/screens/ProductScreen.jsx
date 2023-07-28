@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { BASE_URL } from '@/utils/constants';
 import { toast } from 'react-toastify';
+import Meta from '@/components/Meta';
 const ProductScreen = ({ productId }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -73,6 +74,7 @@ const ProductScreen = ({ productId }) => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} description={product.description} />
           <Row>
             <Col md={5}>
               <Image src={BASE_URL + product.image} alt={product.name} fluid />
