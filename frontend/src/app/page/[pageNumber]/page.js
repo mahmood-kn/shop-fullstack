@@ -20,8 +20,7 @@ export default function Home({ params }) {
   // const products = await getData();
   return (
     <HomeScreen
-      // products={products}
-      pageNumber={params.pageNumber}
+    // products={products}
     />
   );
 }

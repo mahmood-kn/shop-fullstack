@@ -7,8 +7,12 @@ import { useGetProductsQuery } from '@/redux/slices/productApiSlice';
 import { useParams } from 'next/navigation';
 import Paginate from '@/components/Paginate';
 
-const HomeScreen = ({ pageNumber }) => {
-  const { data, error, isLoading } = useGetProductsQuery({ pageNumber });
+const HomeScreen = () => {
+  const { pageNumber, keyword } = useParams();
+  const { data, error, isLoading } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+  });
   return (
     <>
       {isLoading ? (
@@ -27,7 +31,11 @@ const HomeScreen = ({ pageNumber }) => {
               </Col>
             ))}
           </Row>
-          <Paginate pages={data.pages} page={data.page} />
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ''}
+          />
         </>
       )}
     </>

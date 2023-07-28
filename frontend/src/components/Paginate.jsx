@@ -3,11 +3,17 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
 
-const Paginate = ({ pages, page, isAdmin }) => {
+const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
   const router = useRouter();
   const handleClick = (e, x) => {
     e.preventDefault();
-    router.push(!isAdmin ? `/page/${x + 1}` : `/admin/productlist/${x + 1}`);
+    router.push(
+      !isAdmin
+        ? keyword
+          ? `/search/${keyword}/page/${x + 1}`
+          : `/page/${x + 1}`
+        : `/admin/productlist/${x + 1}`
+    );
   };
   return (
     <>

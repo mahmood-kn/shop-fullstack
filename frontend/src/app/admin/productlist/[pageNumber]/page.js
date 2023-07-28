@@ -7,7 +7,7 @@ const ProductListScreen = dynamic(
 );
 
 const Page = ({ params }) => {
-  return <ProductListScreen pageNumber={params.pageNumber} />;
+  return <ProductListScreen />;
 };
 
 export default Page;

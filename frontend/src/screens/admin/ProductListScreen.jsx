@@ -14,9 +14,11 @@ import {
 } from '@/redux/slices/productApiSlice';
 import { toast } from 'react-toastify';
 import Paginate from '@/components/Paginate';
+import { useParams } from 'next/navigation';
 
-const ProductListScreen = ({ pageNumber }) => {
+const ProductListScreen = () => {
   useAdminRoute();
+  const { pageNumber } = useParams();
   const { data, isLoading, error, refetch } = useGetProductsQuery({
     pageNumber,
   });
