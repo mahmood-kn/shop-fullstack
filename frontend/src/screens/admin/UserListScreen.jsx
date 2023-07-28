@@ -6,15 +6,31 @@ import Loader from '@/components/Loader';
 import Message from '@/components/Message';
 import { FaCheck, FaEdit, FaTimes, FaTrash } from 'react-icons/fa';
 import Link from 'next/link';
-import { useGetUsersQuery } from '@/redux/slices/usersApiSlice';
+import {
+  useDeleteUserMutation,
+  useGetUsersQuery,
+} from '@/redux/slices/usersApiSlice';
+import { toast } from 'react-toastify';
 
 const UserListScreen = () => {
   useAdminRoute();
   const { data: users, isLoading, error, refetch } = useGetUsersQuery();
-  const deleteHandler = (id) => {};
+  const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
+  const deleteHandler = async (id) => {
+    if (window.confirm('Are you sure?')) {
+      try {
+        await deleteUser(id);
+        refetch();
+        toast.success('User deleted');
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  };
   return (
     <>
       <h1>Orders</h1>
+      {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -56,7 +72,7 @@ const UserListScreen = () => {
                     className='btn-sm'
                     variant='danger'
                     style={{ color: 'white' }}
-                    onClick={deleteHandler}>
+                    onClick={() => deleteHandler(user._id)}>
                     <FaTrash />
                   </Button>
                 </td>
