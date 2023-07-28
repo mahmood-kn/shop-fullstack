@@ -5,6 +5,7 @@ import Loader from '@/components/Loader';
 import Message from '@/components/Message';
 import { useGetProductsQuery } from '@/redux/slices/productApiSlice';
 import { useParams } from 'next/navigation';
+import Paginate from '@/components/Paginate';
 
 const HomeScreen = ({ pageNumber }) => {
   const { data, error, isLoading } = useGetProductsQuery({ pageNumber });
@@ -26,6 +27,7 @@ const HomeScreen = ({ pageNumber }) => {
               </Col>
             ))}
           </Row>
+          <Paginate pages={data.pages} page={data.page} />
         </>
       )}
     </>

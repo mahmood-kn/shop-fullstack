@@ -13,10 +13,13 @@ import {
   useGetProductsQuery,
 } from '@/redux/slices/productApiSlice';
 import { toast } from 'react-toastify';
+import Paginate from '@/components/Paginate';
 
-const ProductListScreen = () => {
+const ProductListScreen = ({ pageNumber }) => {
   useAdminRoute();
-  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
+  const { data, isLoading, error, refetch } = useGetProductsQuery({
+    pageNumber,
+  });
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
   const [deleteProduct, { isLoading: loadingDelete }] =
@@ -61,46 +64,49 @@ const ProductListScreen = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped hover responsive className='table-sm'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>BRAND</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product._id}>
-                <td>{product._id}</td>
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td>{product.brand}</td>
-
-                <td>
-                  <Link
-                    prefetch={false}
-                    href={`/admin/product/${product._id}/edit`}>
-                    <Button className='btn-sm mx-2' variant='light'>
-                      <FaEdit />
-                    </Button>
-                  </Link>
-                  <Button
-                    className='btn-sm'
-                    style={{ color: 'white' }}
-                    variant='danger'
-                    onClick={() => deleteHandler(product._id)}>
-                    <FaTrash />
-                  </Button>
-                </td>
+        <>
+          <Table striped hover responsive className='table-sm'>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>CATEGORY</th>
+                <th>BRAND</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {data.products.map((product) => (
+                <tr key={product._id}>
+                  <td>{product._id}</td>
+                  <td>{product.name}</td>
+                  <td>{product.price}</td>
+                  <td>{product.category}</td>
+                  <td>{product.brand}</td>
+
+                  <td>
+                    <Link
+                      prefetch={false}
+                      href={`/admin/product/${product._id}/edit`}>
+                      <Button className='btn-sm mx-2' variant='light'>
+                        <FaEdit />
+                      </Button>
+                    </Link>
+                    <Button
+                      className='btn-sm'
+                      style={{ color: 'white' }}
+                      variant='danger'
+                      onClick={() => deleteHandler(product._id)}>
+                      <FaTrash />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <Paginate pages={data.pages} page={data.page} isAdmin />
+        </>
       )}
     </>
   );
