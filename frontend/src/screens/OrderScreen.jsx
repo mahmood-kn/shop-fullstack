@@ -21,6 +21,7 @@ import Message from '@/components/Message';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { BASE_URL } from '@/utils/constants';
 
 const OrderScreen = ({ id: orderId }) => {
   const {
@@ -153,7 +154,12 @@ const OrderScreen = ({ id: orderId }) => {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
+                      <Image
+                        src={BASE_URL + item.image}
+                        alt={item.name}
+                        fluid
+                        rounded
+                      />
                     </Col>
                     <Col>
                       <Link href={`/products/${item.product}`}>

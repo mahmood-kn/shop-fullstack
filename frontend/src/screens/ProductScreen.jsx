@@ -19,6 +19,7 @@ import Message from '@/components/Message';
 import { addToCart } from '@/redux/slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import { BASE_URL } from '@/utils/constants';
 const ProductScreen = ({ productId }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -46,7 +47,7 @@ const ProductScreen = ({ productId }) => {
       ) : (
         <Row>
           <Col md={5}>
-            <Image src={product.image} alt={product.name} fluid />
+            <Image src={BASE_URL + product.image} alt={product.name} fluid />
           </Col>
           <Col md={4}>
             <ListGroup variant='flush'>

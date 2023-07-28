@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Card } from 'react-bootstrap';
 import Rating from './Rating';
+import { BASE_URL } from '@/utils/constants';
 const Product = ({ product }) => {
   return (
     <Card className='my-3 p-'>
       <Link href={`/products/${product._id}`}>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img src={BASE_URL + product.image} variant='top' />
       </Link>
       <Card.Body>
         <Link href={`/products/${product._id}`}>

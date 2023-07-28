@@ -10,6 +10,7 @@ import Message from '@/components/Message';
 import { useCreateOrderMutation } from '@/redux/slices/orderApiSlice';
 import Loader from '@/components/Loader';
 import { clearCartItems } from '@/redux/slices/cartSlice';
+import { BASE_URL } from '@/utils/constants';
 
 const PlaceOrderScreen = () => {
   const {
@@ -78,7 +79,7 @@ const PlaceOrderScreen = () => {
                       <Row>
                         <Col md={2}>
                           <Image
-                            src={item.image}
+                            src={BASE_URL + item.image}
                             alt={item.name}
                             fluid
                             rounded

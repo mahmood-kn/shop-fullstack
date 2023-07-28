@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { addToCart, removeFromCart } from '@/redux/slices/cartSlice';
 import { useRouter } from 'next/navigation';
+import { BASE_URL } from '@/utils/constants';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const CartScreen = () => {
               <ListGroup.Item key={item._id}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid />
+                    <Image src={BASE_URL + item.image} alt={item.name} fluid />
                   </Col>
                   <Col md={3}>
                     <Link href={`/products/${item._id}`}>{item.name}</Link>
